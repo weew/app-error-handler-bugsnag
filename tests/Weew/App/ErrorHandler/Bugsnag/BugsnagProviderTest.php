@@ -2,10 +2,10 @@
 
 namespace Tests\Weew\App\ErrorHandler\Bugsnag;
 
+use Bugsnag_Client;
 use Exception;
 use PHPUnit_Framework_TestCase;
 use Weew\App\App;
-use Weew\App\ErrorHandler\Bugsnag\BugsnagClient;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagConfig;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagProvider;
 use Weew\App\ErrorHandler\ErrorHandlingProvider;
@@ -36,21 +36,21 @@ class BugsnagProviderTest extends PHPUnit_Framework_TestCase {
 
     public function test_bugsnag_client_instance_is_shared() {
         $app = $this->createApp();
-        $client = $app->getContainer()->get(BugsnagClient::class);
-        $this->assertTrue($client instanceof BugsnagClient);
+        $client = $app->getContainer()->get(Bugsnag_Client::class);
+        $this->assertTrue($client instanceof Bugsnag_Client);
     }
 
     public function test_handle_error() {
         $app = $this->createApp();
-        /** @var BugsnagClient $client */
-        $client = $app->getContainer()->get(BugsnagClient::class);
-        $client->handleError(new RecoverableError(1, 'error', 'file', 1));
+        /** @var BugsnagProvider $provider */
+        $provider = $app->getContainer()->get(BugsnagProvider::class);
+        $provider->handleError(new RecoverableError(1, 'error', 'file', 1));
     }
 
     public function test_handle_exception() {
         $app = $this->createApp();
-        /** @var BugsnagClient $client */
-        $client = $app->getContainer()->get(BugsnagClient::class);
-        $client->handleException(new Exception());
+        /** @var BugsnagProvider $provider */
+        $provider = $app->getContainer()->get(BugsnagProvider::class);
+        $provider->handleException(new Exception());
     }
 }
