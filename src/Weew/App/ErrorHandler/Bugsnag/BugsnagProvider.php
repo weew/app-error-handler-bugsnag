@@ -18,8 +18,8 @@ class BugsnagProvider {
     ) {
         $client = new BugsnagClient($config->getClientId());
 
-        $client->enableErrorHandling($errorHandler);
-        $client->enableExceptionHandling($errorHandler);
+        $errorHandler->addErrorHandler([$client, 'handleError']);
+        $errorHandler->addExceptionHandler([$client, 'handleException']);
 
         $client->setReleaseStage($config->getEnvironment());
         $client->setNotifyReleaseStages($config->getEnabledEnvironments());

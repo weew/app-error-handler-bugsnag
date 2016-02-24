@@ -44,13 +44,13 @@ class BugsnagProviderTest extends PHPUnit_Framework_TestCase {
         $app = $this->createApp();
         /** @var BugsnagClient $client */
         $client = $app->getContainer()->get(BugsnagClient::class);
-        $client->customErrorHandler(new RecoverableError(1, 'error', 'file', 1));
+        $client->handleError(new RecoverableError(1, 'error', 'file', 1));
     }
 
     public function test_handle_exception() {
         $app = $this->createApp();
         /** @var BugsnagClient $client */
         $client = $app->getContainer()->get(BugsnagClient::class);
-        $client->customExceptionHandler(new Exception());
+        $client->handleException(new Exception());
     }
 }
