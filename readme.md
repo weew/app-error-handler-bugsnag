@@ -27,6 +27,7 @@ To enable this provider simply register it on the kernel.
 
 ```php
 $app->getKernel()->addProviders([
+    ErrorHandlingProvider::class,
     BugsnagProvider::class,
 ]);
 ```
