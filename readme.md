@@ -19,7 +19,7 @@
 
 ## Introduction
 
-This package integrates [Bugsnag](https://bugsnag.com) with the [weew/php-app-error-handler](https://github.com/weew/php-app-error-handler) package.
+This package integrates [Bugsnag](https://bugsnag.com) into the [weew/php-app-error-handler](https://github.com/weew/php-app-error-handler) package.
 
 ## Usage
 
