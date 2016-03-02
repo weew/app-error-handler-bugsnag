@@ -28,8 +28,36 @@ class BugsnagErrorHandler {
         Bugsnag_Client $bugsnagClient,
         IErrorHandler $errorHandler
     ) {
-        $this->bugsnagClient = $bugsnagClient;
+        $this->setBugsnagClient($bugsnagClient);
+        $this->setErrorHandler($errorHandler);
+    }
+
+    /**
+     * @return IErrorHandler¨
+     */
+    public function getErrorHandler() {
+        return $this->errorHandler;
+    }
+
+    /**
+     * @param IErrorHandler $errorHandler
+     */
+    public function setErrorHandler(IErrorHandler $errorHandler) {
         $this->errorHandler = $errorHandler;
+    }
+
+    /**
+     * @return Bugsnag_Client
+     */
+    public function getBugsnagClient() {
+        return $this->bugsnagClient;
+    }
+
+    /**
+     * @param Bugsnag_Client $bugsnagClient
+     */
+    public function setBugsnagClient(Bugsnag_Client $bugsnagClient) {
+        $this->bugsnagClient = $bugsnagClient;
     }
 
     /**

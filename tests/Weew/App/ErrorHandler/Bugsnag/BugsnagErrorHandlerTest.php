@@ -47,4 +47,20 @@ class BugsnagErrorHandlerTest extends PHPUnit_Framework_TestCase {
         );
         $bugsnagErrorHandler->handleException(new Exception());
     }
+
+    public function test_get_and_set_bugsnag_client() {
+        $errorHandler = new ErrorHandler();
+        $bugsnagClient = new Bugsnag_Client('client_id');
+        $bugsnagErrorHandler = new BugsnagErrorHandler($bugsnagClient, $errorHandler);
+
+        $this->assertTrue($bugsnagErrorHandler->getBugsnagClient() === $bugsnagClient);
+    }
+
+    public function test_get_and_set_error_handler() {
+        $errorHandler = new ErrorHandler();
+        $bugsnagClient = new Bugsnag_Client('client_id');
+        $bugsnagErrorHandler = new BugsnagErrorHandler($bugsnagClient, $errorHandler);
+
+        $this->assertTrue($bugsnagErrorHandler->getErrorHandler() === $errorHandler);
+    }
 }

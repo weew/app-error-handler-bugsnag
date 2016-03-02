@@ -2,10 +2,10 @@
 
 namespace Tests\Weew\App\ErrorHandler\Bugsnag;
 
-use Bugsnag_Client;
 use PHPUnit_Framework_TestCase;
 use Weew\App\App;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagConfig;
+use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandler;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagProvider;
 use Weew\App\ErrorHandler\ErrorHandlingProvider;
 
@@ -34,7 +34,7 @@ class BugsnagProviderTest extends PHPUnit_Framework_TestCase {
 
     public function test_bugsnag_client_instance_is_shared() {
         $app = $this->createApp();
-        $client = $app->getContainer()->get(Bugsnag_Client::class);
-        $this->assertTrue($client instanceof Bugsnag_Client);
+        $client = $app->getContainer()->get(BugsnagErrorHandler::class);
+        $this->assertTrue($client instanceof BugsnagErrorHandler);
     }
 }

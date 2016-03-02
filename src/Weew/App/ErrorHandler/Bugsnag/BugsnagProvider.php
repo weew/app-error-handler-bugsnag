@@ -8,21 +8,40 @@ use Weew\ErrorHandler\IErrorHandler;
 
 class BugsnagProvider {
     /**
-     * @param BugsnagConfig $bugsnagConfig
-     * @param IErrorHandler $errorHandler
+     * BugsnagProvider constructor.
+     *
      * @param IContainer $container
      */
-    public function boot(
-        BugsnagConfig $bugsnagConfig,
-        IErrorHandler $errorHandler,
-        IContainer $container
+    public function __construct(IContainer $container) {
+        $container->set(IBugsnagConfig::class, BugsnagConfig::class);
+        $container->set(BugsnagErrorHandler::class, [$this, 'createBugsnagErrorHandler'])->singleton();
+    }
+
+    /**
+     * Enable error handler during initialization in order to
+     * get notified about errors as early as possible.
+     *
+     * @param BugsnagErrorHandler $bugsnagErrorHandler
+     */
+    public function initialize(BugsnagErrorHandler $bugsnagErrorHandler) {
+        $bugsnagErrorHandler->enableErrorHandling();
+        $bugsnagErrorHandler->enableErrorHandling();
+    }
+
+    /**
+     * @param IBugsnagConfig $bugsnagConfig
+     * @param IErrorHandler $errorHandler
+     *
+     * @return BugsnagErrorHandler
+     */
+    public function createBugsnagErrorHandler(
+        IBugsnagConfig $bugsnagConfig,
+        IErrorHandler $errorHandler
     ) {
         $bugsnagClient = new Bugsnag_Client($bugsnagConfig->getClientId());
         $bugsnagErrorHandler = new BugsnagErrorHandler(
             $bugsnagClient, $errorHandler
         );
-        $bugsnagErrorHandler->enableErrorHandling();
-        $bugsnagErrorHandler->enableErrorHandling();
 
         $bugsnagClient->setReleaseStage($bugsnagConfig->getEnvironment());
         $bugsnagClient->setNotifyReleaseStages($bugsnagConfig->getEnabledEnvironments());
@@ -40,6 +59,6 @@ class BugsnagProvider {
             $bugsnagClient->setHostname($hostname);
         }
 
-        $container->set(Bugsnag_Client::class, $bugsnagClient);
+        return $bugsnagErrorHandler;
     }
 }
