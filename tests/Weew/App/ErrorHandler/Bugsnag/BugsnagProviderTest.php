@@ -17,7 +17,7 @@ class BugsnagProviderTest extends PHPUnit_Framework_TestCase {
             BugsnagProvider::class,
         ]);
 
-        $app->loadConfig()->merge([
+        $app->getConfig()->merge([
             BugsnagConfig::CLIENT_ID => 'client_id',
             BugsnagConfig::PROJECT_ROOT => __DIR__,
             BugsnagConfig::HOSTNAME => 'hostname',
