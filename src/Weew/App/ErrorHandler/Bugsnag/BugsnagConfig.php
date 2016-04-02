@@ -6,7 +6,7 @@ use Weew\Config\IConfig;
 
 class BugsnagConfig implements IBugsnagConfig {
     const CLIENT_ID = 'bugsnag.client_id';
-    const ENVIRONMENT = 'env';
+    const ENVIRONMENT = 'bugsnag.env';
     const ENABLED_ENVIRONMENTS = 'bugsnag.notify_in_environments';
     const TYPE = 'bugsnag.type';
     const METADATA = 'bugsnag.metadata';
