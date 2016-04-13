@@ -42,11 +42,11 @@ bugsnag:
   client_id: "client_id"
   enabled_environments: ["dev", "stage", "prod"]
   type: "service"
-  metadata:
-    some: data
   auto_notify: true
-  filters: ["password", "credit_card"]
   send_code: true
   project_root: "path/to/root/directory"
   hostname: "hostname"
+  metadata:
+    some: data
+  filters: ["password", "credit_card"]
 ```
