@@ -7,21 +7,23 @@ use Weew\App\App;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandlerConfig;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandler;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandlerProvider;
-use Weew\App\ErrorHandler\ErrorHandlingProvider;
+use Weew\App\ErrorHandler\ErrorHandlerProvider;
+use Weew\Config\Config;
 
 class BugsnagErrorHandlerProviderTest extends PHPUnit_Framework_TestCase {
     private function createApp() {
         $app = new App();
         $app->getKernel()->addProviders([
-            ErrorHandlingProvider::class,
+            ErrorHandlerProvider::class,
             BugsnagErrorHandlerProvider::class,
         ]);
 
-        $app->getConfig()->merge([
+        $config = new Config([
             BugsnagErrorHandlerConfig::CLIENT_ID => 'client_id',
             BugsnagErrorHandlerConfig::PROJECT_ROOT => __DIR__,
             BugsnagErrorHandlerConfig::HOSTNAME => 'hostname',
         ]);
+        $app->getConfigLoader()->addConfig($config);
 
         $app->start();
 
