@@ -4,7 +4,7 @@ namespace Weew\App\ErrorHandler\Bugsnag;
 
 use Weew\Config\IConfig;
 
-class BugsnagConfig implements IBugsnagConfig {
+class BugsnagErrorHandlerConfig implements IBugsnagErrorHandlerConfig {
     const CLIENT_ID = 'bugsnag.client_id';
     const ENVIRONMENT = 'bugsnag.env';
     const ENABLED_ENVIRONMENTS = 'bugsnag.enabled_environments';
@@ -22,7 +22,7 @@ class BugsnagConfig implements IBugsnagConfig {
     protected $config;
 
     /**
-     * BugsnagConfig constructor.
+     * BugsnagErrorHandlerConfig constructor.
      *
      * @param IConfig $config
      */

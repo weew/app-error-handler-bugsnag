@@ -6,14 +6,14 @@ use Bugsnag_Client;
 use Weew\Container\IContainer;
 use Weew\ErrorHandler\IErrorHandler;
 
-class BugsnagProvider {
+class BugsnagErrorHandlerProvider {
     /**
-     * BugsnagProvider constructor.
+     * BugsnagErrorHandlerProvider constructor.
      *
      * @param IContainer $container
      */
     public function __construct(IContainer $container) {
-        $container->set(IBugsnagConfig::class, BugsnagConfig::class);
+        $container->set(IBugsnagErrorHandlerConfig::class, BugsnagErrorHandlerConfig::class);
         $container->set(BugsnagErrorHandler::class, [$this, 'createBugsnagErrorHandler'])->singleton();
     }
 
@@ -29,13 +29,13 @@ class BugsnagProvider {
     }
 
     /**
-     * @param IBugsnagConfig $bugsnagConfig
+     * @param IBugsnagErrorHandlerConfig $bugsnagConfig
      * @param IErrorHandler $errorHandler
      *
      * @return BugsnagErrorHandler
      */
     public function createBugsnagErrorHandler(
-        IBugsnagConfig $bugsnagConfig,
+        IBugsnagErrorHandlerConfig $bugsnagConfig,
         IErrorHandler $errorHandler
     ) {
         $bugsnagClient = new Bugsnag_Client($bugsnagConfig->getClientId());

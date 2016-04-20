@@ -3,25 +3,25 @@
 namespace Tests\Weew\App\ErrorHandler\Bugsnag;
 
 use PHPUnit_Framework_TestCase;
-use Weew\App\ErrorHandler\Bugsnag\BugsnagConfig;
+use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandlerConfig;
 use Weew\Config\Config;
 use Weew\Config\Exceptions\MissingConfigException;
 
-class BugsnagConfigTest extends PHPUnit_Framework_TestCase {
+class BugsnagErrorHandlerConfigTest extends PHPUnit_Framework_TestCase {
     public function test_getters() {
         $config = new Config();
-        $config->set(BugsnagConfig::CLIENT_ID, 'client_id');
-        $config->set(BugsnagConfig::ENVIRONMENT, 'environment');
-        $config->set(BugsnagConfig::FILTERS, ['filters']);
-        $config->set(BugsnagConfig::METADATA, ['metadata']);
-        $config->set(BugsnagConfig::ENABLED_ENVIRONMENTS, ['notify_in']);
-        $config->set(BugsnagConfig::SEND_CODE, 'send_code');
-        $config->set(BugsnagConfig::TYPE, 'type');
-        $config->set(BugsnagConfig::AUTO_NOTIFY, 'auto_notify');
-        $config->set(BugsnagConfig::PROJECT_ROOT, 'project_root');
-        $config->set(BugsnagConfig::HOSTNAME, 'hostname');
+        $config->set(BugsnagErrorHandlerConfig::CLIENT_ID, 'client_id');
+        $config->set(BugsnagErrorHandlerConfig::ENVIRONMENT, 'environment');
+        $config->set(BugsnagErrorHandlerConfig::FILTERS, ['filters']);
+        $config->set(BugsnagErrorHandlerConfig::METADATA, ['metadata']);
+        $config->set(BugsnagErrorHandlerConfig::ENABLED_ENVIRONMENTS, ['notify_in']);
+        $config->set(BugsnagErrorHandlerConfig::SEND_CODE, 'send_code');
+        $config->set(BugsnagErrorHandlerConfig::TYPE, 'type');
+        $config->set(BugsnagErrorHandlerConfig::AUTO_NOTIFY, 'auto_notify');
+        $config->set(BugsnagErrorHandlerConfig::PROJECT_ROOT, 'project_root');
+        $config->set(BugsnagErrorHandlerConfig::HOSTNAME, 'hostname');
 
-        $settings = new BugsnagConfig($config);
+        $settings = new BugsnagErrorHandlerConfig($config);
 
         $this->assertEquals('client_id', $settings->getClientId());
         $this->assertEquals('environment', $settings->getEnvironment());
@@ -37,6 +37,6 @@ class BugsnagConfigTest extends PHPUnit_Framework_TestCase {
 
     public function test_create_without_client_id() {
         $this->setExpectedException(MissingConfigException::class);
-        new BugsnagConfig(new Config());
+        new BugsnagErrorHandlerConfig(new Config());
     }
 }

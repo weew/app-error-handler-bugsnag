@@ -2,7 +2,7 @@
 
 namespace Weew\App\ErrorHandler\Bugsnag;
 
-interface IBugsnagConfig {
+interface IBugsnagErrorHandlerConfig {
     /**
      * @return string
      */

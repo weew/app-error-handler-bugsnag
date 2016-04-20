@@ -4,23 +4,23 @@ namespace Tests\Weew\App\ErrorHandler\Bugsnag;
 
 use PHPUnit_Framework_TestCase;
 use Weew\App\App;
-use Weew\App\ErrorHandler\Bugsnag\BugsnagConfig;
+use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandlerConfig;
 use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandler;
-use Weew\App\ErrorHandler\Bugsnag\BugsnagProvider;
+use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandlerProvider;
 use Weew\App\ErrorHandler\ErrorHandlingProvider;
 
-class BugsnagProviderTest extends PHPUnit_Framework_TestCase {
+class BugsnagErrorHandlerProviderTest extends PHPUnit_Framework_TestCase {
     private function createApp() {
         $app = new App();
         $app->getKernel()->addProviders([
             ErrorHandlingProvider::class,
-            BugsnagProvider::class,
+            BugsnagErrorHandlerProvider::class,
         ]);
 
         $app->getConfig()->merge([
-            BugsnagConfig::CLIENT_ID => 'client_id',
-            BugsnagConfig::PROJECT_ROOT => __DIR__,
-            BugsnagConfig::HOSTNAME => 'hostname',
+            BugsnagErrorHandlerConfig::CLIENT_ID => 'client_id',
+            BugsnagErrorHandlerConfig::PROJECT_ROOT => __DIR__,
+            BugsnagErrorHandlerConfig::HOSTNAME => 'hostname',
         ]);
 
         $app->start();

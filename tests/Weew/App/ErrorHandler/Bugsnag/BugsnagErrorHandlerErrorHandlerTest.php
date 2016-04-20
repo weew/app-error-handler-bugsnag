@@ -9,7 +9,7 @@ use Weew\App\ErrorHandler\Bugsnag\BugsnagErrorHandler;
 use Weew\ErrorHandler\ErrorHandler;
 use Weew\ErrorHandler\Errors\RecoverableError;
 
-class BugsnagErrorHandlerTest extends PHPUnit_Framework_TestCase {
+class BugsnagErrorHandlerErrorHandlerTest extends PHPUnit_Framework_TestCase {
     public function test_enable_error_handling() {
         $errorHandler = new ErrorHandler();
         $bugsnagErrorHandler = new BugsnagErrorHandler(
