@@ -5,17 +5,17 @@ namespace Weew\App\ErrorHandler\Bugsnag;
 use Weew\Config\IConfig;
 
 class BugsnagErrorHandlerConfig implements IBugsnagErrorHandlerConfig {
-    const CLIENT_ID = 'bugsnag.client_id';
-    const ENVIRONMENT = 'bugsnag.env';
-    const ENABLED_ENVIRONMENTS = 'bugsnag.enabled_environments';
-    const TYPE = 'bugsnag.type';
-    const METADATA = 'bugsnag.metadata';
-    const AUTO_NOTIFY = 'bugsnag.auto_notify';
-    const FILTERS = 'bugsnag.filters';
-    const SEND_CODE = 'bugsnag.send_code';
-    const PROJECT_ROOT = 'bugsnag.project_root';
-    const HOSTNAME = 'bugsnag.hostname';
-    const NUMBER_OF_SKIPPED_STACK_TRACE_LINES = 'bugsnag.number_of_skipped_stack_trace_lines';
+    const CLIENT_ID = 'bugsnag_error_handler.client_id';
+    const ENVIRONMENT = 'bugsnag_error_handler.env';
+    const ENABLED_ENVIRONMENTS = 'bugsnag_error_handler.enabled_environments';
+    const TYPE = 'bugsnag_error_handler.type';
+    const METADATA = 'bugsnag_error_handler.metadata';
+    const AUTO_NOTIFY = 'bugsnag_error_handler.auto_notify';
+    const FILTERS = 'bugsnag_error_handler.filters';
+    const SEND_CODE = 'bugsnag_error_handler.send_code';
+    const PROJECT_ROOT = 'bugsnag_error_handler.project_root';
+    const HOSTNAME = 'bugsnag_error_handler.hostname';
+    const NUMBER_OF_SKIPPED_STACK_TRACE_LINES = 'bugsnag_error_handler.number_of_skipped_stack_trace_lines';
 
     /**
      * @var IConfig

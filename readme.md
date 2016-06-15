@@ -37,7 +37,7 @@ $app->getKernel()->addProviders([
 This is how the config might look like in yaml:
 
 ```yaml
-bugsnag:
+bugsnag_error_handler:
   env: "dev"
   client_id: "client_id"
   enabled_environments: ["dev", "stage", "prod"]
