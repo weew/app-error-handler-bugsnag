@@ -15,6 +15,7 @@ class BugsnagErrorHandlerConfig implements IBugsnagErrorHandlerConfig {
     const SEND_CODE = 'bugsnag.send_code';
     const PROJECT_ROOT = 'bugsnag.project_root';
     const HOSTNAME = 'bugsnag.hostname';
+    const NUMBER_OF_SKIPPED_STACK_TRACE_LINES = 'bugsnag.number_of_skipped_stack_trace_lines';
 
     /**
      * @var IConfig
@@ -118,5 +119,12 @@ class BugsnagErrorHandlerConfig implements IBugsnagErrorHandlerConfig {
      */
     public function getHostname($default = null) {
         return $this->config->get(self::HOSTNAME, $default);
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfSkippedStackTraceLines() {
+        return $this->config->get(self::NUMBER_OF_SKIPPED_STACK_TRACE_LINES, 5);
     }
 }

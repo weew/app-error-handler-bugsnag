@@ -3,6 +3,7 @@
 namespace Weew\App\ErrorHandler\Bugsnag;
 
 use Bugsnag_Client;
+use Bugsnag_Error;
 use Weew\Container\IContainer;
 use Weew\ErrorHandler\IErrorHandler;
 
@@ -24,7 +25,7 @@ class BugsnagErrorHandlerProvider {
      * @param BugsnagErrorHandler $bugsnagErrorHandler
      */
     public function initialize(BugsnagErrorHandler $bugsnagErrorHandler) {
-        $bugsnagErrorHandler->enableErrorHandling();
+        $bugsnagErrorHandler->enableExceptionHandling();
         $bugsnagErrorHandler->enableErrorHandling();
     }
 
@@ -50,6 +51,10 @@ class BugsnagErrorHandlerProvider {
         $bugsnagClient->setAutoNotify($bugsnagConfig->getAutoNotify());
         $bugsnagClient->setFilters($bugsnagConfig->getFilters());
         $bugsnagClient->setSendCode($bugsnagConfig->getSendCode());
+
+        $bugsnagClient->setBeforeNotifyFunction(function(Bugsnag_Error $error) use ($bugsnagConfig) {
+            array_splice($error->stacktrace->frames, 0, $bugsnagConfig->getNumberOfSkippedStackTraceLines());
+        });
 
         if ($projectRoot = $bugsnagConfig->getProjectRoot()) {
             $bugsnagClient->setProjectRoot($projectRoot);

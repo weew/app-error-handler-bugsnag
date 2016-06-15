@@ -27,7 +27,7 @@ To enable this provider simply register it on the kernel.
 
 ```php
 $app->getKernel()->addProviders([
-    ErrorHandlingProvider::class,
+    ErrorHandlerProvider::class,
     BugsnagErrorHandlerProvider::class,
 ]);
 ```
@@ -46,6 +46,7 @@ bugsnag:
   send_code: true
   project_root: "path/to/root/directory"
   hostname: "hostname"
+  number_of_skipped_stack_trace_lines: 5
   metadata:
     some: data
   filters: ["password", "credit_card"]

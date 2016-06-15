@@ -52,4 +52,9 @@ interface IBugsnagErrorHandlerConfig {
      * @return string
      */
     function getHostname();
+
+    /**
+     * @return int
+     */
+    function getNumberOfSkippedStackTraceLines();
 }

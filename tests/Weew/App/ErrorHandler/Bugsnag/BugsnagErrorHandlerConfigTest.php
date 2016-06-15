@@ -20,6 +20,7 @@ class BugsnagErrorHandlerConfigTest extends PHPUnit_Framework_TestCase {
         $config->set(BugsnagErrorHandlerConfig::AUTO_NOTIFY, 'auto_notify');
         $config->set(BugsnagErrorHandlerConfig::PROJECT_ROOT, 'project_root');
         $config->set(BugsnagErrorHandlerConfig::HOSTNAME, 'hostname');
+        $config->set(BugsnagErrorHandlerConfig::NUMBER_OF_SKIPPED_STACK_TRACE_LINES, 10);
 
         $settings = new BugsnagErrorHandlerConfig($config);
 
@@ -33,6 +34,10 @@ class BugsnagErrorHandlerConfigTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('auto_notify', $settings->getAutoNotify());
         $this->assertEquals('project_root', $settings->getProjectRoot());
         $this->assertEquals('hostname', $settings->getHostname());
+
+        $this->assertEquals(10, $settings->getNumberOfSkippedStackTraceLines());
+        $config->remove(BugsnagErrorHandlerConfig::NUMBER_OF_SKIPPED_STACK_TRACE_LINES);
+        $this->assertEquals(5, $settings->getNumberOfSkippedStackTraceLines());
     }
 
     public function test_create_without_client_id() {
