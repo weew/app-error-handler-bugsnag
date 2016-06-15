@@ -37,7 +37,7 @@ class BugsnagErrorHandlerConfigTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals(10, $settings->getNumberOfSkippedStackTraceLines());
         $config->remove(BugsnagErrorHandlerConfig::NUMBER_OF_SKIPPED_STACK_TRACE_LINES);
-        $this->assertEquals(5, $settings->getNumberOfSkippedStackTraceLines());
+        $this->assertEquals(0, $settings->getNumberOfSkippedStackTraceLines());
     }
 
     public function test_create_without_client_id() {

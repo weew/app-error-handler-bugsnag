@@ -125,6 +125,6 @@ class BugsnagErrorHandlerConfig implements IBugsnagErrorHandlerConfig {
      * @return int
      */
     public function getNumberOfSkippedStackTraceLines() {
-        return $this->config->get(self::NUMBER_OF_SKIPPED_STACK_TRACE_LINES, 5);
+        return $this->config->get(self::NUMBER_OF_SKIPPED_STACK_TRACE_LINES, 0);
     }
 }
