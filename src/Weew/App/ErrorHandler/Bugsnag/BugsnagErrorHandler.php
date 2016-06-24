@@ -90,8 +90,6 @@ class BugsnagErrorHandler {
             $error->getFile(),
             $error->getLine()
         );
-
-        return false;
     }
 
     /**
@@ -101,7 +99,5 @@ class BugsnagErrorHandler {
      */
     public function handleException(Exception $exception) {
         $this->bugsnagClient->exceptionHandler($exception);
-
-        return false;
     }
 }
