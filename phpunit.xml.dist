@@ -10,7 +10,7 @@
          syntaxCheck="false"
          bootstrap="tests/bootstrap.php">
     <testsuites>
-        <testsuite name="php-app-error-handler-bugsnag">
+        <testsuite name="app-error-handler-bugsnag">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

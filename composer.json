@@ -1,6 +1,6 @@
 {
-    "name": "weew/php-app-error-handler-bugsnag",
-    "description": "Integrates Bugsnag into the weew/php-app-error-handler package.",
+    "name": "weew/app-error-handler-bugsnag",
+    "description": "Integrates Bugsnag into the weew/app-error-handler package.",
     "license": "MIT",
     "authors": [
         {
@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "weew/php-app-error-handler": "^1.1",
+        "weew/app-error-handler": "^1.1",
         "bugsnag/bugsnag": "^2.6"
     },
     "require-dev": {
